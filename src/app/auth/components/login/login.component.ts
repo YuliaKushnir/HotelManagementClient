@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
+import { UserStorageService } from '../../services/storage/user-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -31,12 +32,29 @@ export class LoginComponent {
   submitForm(){
     this.service.login(this.loginForm.value).subscribe(res=>{
       console.log(res);
-      // if(res.id != null){
-      //   this.message.success("Login successfull", {nzDuration: 5000});
-      //   this.router.navigateByUrl("/");
+
+      if(res.userId != null){
+        const user = {
+          id: res.userId,
+          role: res.userRole
+        }
+
+        UserStorageService.saveUser(user);
+        UserStorageService.saveToken(res.jwt);
+
+        if(UserStorageService.isAdminLoggedIn()){
+          this.router.navigateByUrl("/admin/dashboard");
+        } else if(UserStorageService.isUserLoggedIn()){
+          this.router.navigateByUrl("/user/rooms");
+        }
+      }
+        // this.message.success("Login successfull", {nzDuration: 5000});
+        // this.router.navigateByUrl("/");
       // } else {
       //   this.message.error(`${res.message}`, {nzDuration: 5000});
       // }
+
+       this.message.success("Login successfull", {nzDuration: 5000});
     }, error=>{
       this.message.error('Bad credentials', {nzDuration: 5000})
     });
