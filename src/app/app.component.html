@@ -1,5 +1,9 @@
 <nz-layout>
-  <nz-sider nzCollapsible nzWidth="200px" *ngIf="!isAdminLoggedIn && !isUserLoggedIn">
+  <nz-sider
+    nzCollapsible
+    nzWidth="200px"
+    *ngIf="!isAdminLoggedIn && !isUserLoggedIn"
+  >
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item routerLink="/register">
@@ -16,6 +20,10 @@
   <nz-sider nzCollapsible nzWidth="200px" *ngIf="isAdminLoggedIn">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item routerLink="/admin/room">
+        <span nz-icon nzType="apartment"></span>
+        <span><strong>Add room</strong></span>
+      </li>
       <li nz-menu-item routerLink="/admin/rooms">
         <span nz-icon nzType="apartment"></span>
         <span><strong>Rooms</strong></span>
@@ -48,8 +56,6 @@
       </li>
     </ul>
   </nz-sider>
-
-  
 
   <nz-layout>
     <nz-content>
