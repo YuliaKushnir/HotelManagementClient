@@ -1,0 +1,31 @@
+.center-form{
+    display:block;
+    // justify-content: center;
+}
+
+.room-card{
+    width:300px;
+    margin: 16px;
+}
+
+.room-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.post-room-btn{
+    margin-left: 175px;
+    margin-top: 70px;
+}
+
+.icon{
+    font-size: 20px;
+}
+
+.pagination{
+    // float: right;
+    margin-left: 40%;
+    margin-top: 20px;
+}

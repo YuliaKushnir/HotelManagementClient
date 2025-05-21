@@ -18,12 +18,19 @@ export class AdminService {
     });
   }
 
+  getRooms(pageNumber:number): Observable<any>{
+    return this.http.get(BASIC_URL + `api/admin/rooms/${pageNumber}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader(){
     let authHeader: HttpHeaders = new HttpHeaders();
+    console.log("Authorization", UserStorageService.getToken())
     
     return authHeader.set(
       'Authorization',
-      'Bearer' + UserStorageService.getToken()
+      'Bearer ' + UserStorageService.getToken()
     )
   }
 
