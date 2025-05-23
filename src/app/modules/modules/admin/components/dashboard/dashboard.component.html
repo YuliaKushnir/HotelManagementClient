@@ -1,5 +1,5 @@
 <div class="center-form">
-    <!-- <button nz-button nzType="primary" class="post-room-btn" routerLink="/admin/room">Add room</button> -->
+    <button nz-button nzType="primary" class="post-room-btn" routerLink="/admin/room">Add room</button>
     <div class="room-container">
         <div class="room-row" *ngFor="let room of rooms">
             <nz-card class="room-card" [nzActions]="[actionEdit, actionDelete]">
@@ -21,7 +21,7 @@
                 </nz-avatar>
             </ng-template>
             <ng-template #actionEdit>
-                <span nz-icon nzType="edit" [nzTheme]="'twotone'" class="icon">
+                <span nz-icon nzType="edit" [nzTheme]="'twotone'" class="icon" routerLink="/admin/room/{{room.id}}/edit">
 
                 </span>
             </ng-template>

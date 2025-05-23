@@ -47,6 +47,9 @@ export class LoginComponent {
         } else if(UserStorageService.isUserLoggedIn()){
           this.router.navigateByUrl("/user/rooms");
         }
+
+        console.log("UserStorageService.isAdminLoggedIn() ", UserStorageService.isAdminLoggedIn())
+        console.log("UserStorageService.isUserLoggedIn() ", UserStorageService.isUserLoggedIn())
       }
         // this.message.success("Login successfull", {nzDuration: 5000});
         // this.router.navigateByUrl("/");
