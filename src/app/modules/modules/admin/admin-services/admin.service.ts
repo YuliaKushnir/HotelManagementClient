@@ -36,6 +36,12 @@ export class AdminService {
     });
   }
 
+  deleteRoomById(roomId:number): Observable<any> {
+    return this.http.delete(BASIC_URL + `api/admin/room/${roomId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader(){
     let authHeader: HttpHeaders = new HttpHeaders();
     console.log("Authorization", UserStorageService.getToken())
