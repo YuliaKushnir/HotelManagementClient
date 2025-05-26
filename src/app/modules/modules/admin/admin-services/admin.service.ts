@@ -44,7 +44,6 @@ export class AdminService {
 
   createAuthorizationHeader(){
     let authHeader: HttpHeaders = new HttpHeaders();
-    console.log("Authorization", UserStorageService.getToken())
     
     return authHeader.set(
       'Authorization',
