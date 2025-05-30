@@ -1,0 +1,38 @@
+<div class="center-form">
+    <h1 class="page-title">Reservations</h1>
+    <nz-table #basicTable [nzShowPagination]="'false'" [nzData]="reservations">
+        <thead>
+            <tr>
+                <th>Room name</th>
+                <th>Room type</th>
+                <th>Check in date</th>
+                <th>Check out date</th>
+                <th>Price</th>
+                <th>Username</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservation of basicTable.data">
+                <td>{{reservation.roomName}}</td>
+                <td>{{reservation.roomType}}</td>
+                <td>{{reservation.checkInDate}}</td>
+                <td>{{reservation.checkOutDate}}</td>
+                <td>{{reservation.price}}</td>
+                <td>{{reservation.username}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <div class="pagination">
+        <nz-pagination 
+            (nzPageIndexChange)="pageIndexChange($event)" 
+            [nzPageIndex]="currentPage"
+            [nzTotal]="total"
+            [nzPageSize]="5"
+            >
+        </nz-pagination>
+    </div>
+</div>
